@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: loan-status-predictor
+    runtime: python
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    healthCheckPath: /
+
+envVars:
+  - key: FLASK_ENV
+    value: production
