@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: loan-status-predictor
+    env: python
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    healthCheckPath: /
+    envVars: # Moved envVars inside the service block
+      - key: FLASK_ENV
+        value: production
